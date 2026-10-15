@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4e5d5">
+  <title>uma cartinha pra ti 🤎</title>
+
+  <style>
+    :root {
+      --fundo: #f4e5d5;
+      --cartao: #fff8ef;
+      --marrom: #684b3b;
+      --detalhe: #bd8d70;
+      --botao: #9b7158;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 22px 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--fundo);
+      color: var(--marrom);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .pagina {
+      display: none;
+      width: 100%;
+      max-width: 420px;
+      animation: aparecer 0.45s ease;
+    }
+
+    .pagina.ativa {
+      display: block;
+    }
+
+    .cartao {
+      background: var(--cartao);
+      border: 1px solid #e7d2bd;
+      border-radius: 24px;
+      padding: 24px 21px;
+      text-align: center;
+      box-shadow: 0 8px 25px #8b654019;
+    }
+
+    .gatinho {
+      display: block;
+      width: 100%;
+      max-width: 205px;
+      max-height: 185px;
+      object-fit: contain;
+      margin: 0 auto 16px;
+      border-radius: 14px;
+    }
+
+    .etiqueta {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--detalhe);
+      margin-bottom: 9px;
+    }
+
+    h1 {
+      font-size: 25px;
+      font-weight: normal;
+      line-height: 1.3;
+      margin: 0 0 17px;
+    }
+
+    .texto {
+      font-size: 17px;
+      line-height: 1.75;
+      text-align: left;
+      white-space: pre-line;
+      overflow-wrap: break-word;
+      margin: 0;
+    }
+
+    .botoes {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 23px;
+    }
+
+    button {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      padding: 12px 19px;
+      border: 0;
+      border-radius: 30px;
+      background: var(--botao);
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    button.secundario {
+      color: var(--marrom);
+      background: #ead8c6;
+    }
+
+    button:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .contador {
+      margin-top: 17px;
+      color: #aa8b74;
+      font: 12px Arial, sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .coracao {
+      color: #b87c70;
+      font-size: 23px;
+      margin-top: 14px;
+    }
+
+    .aviso-musica {
+      font: 11px Arial, sans-serif;
+      color: #a58a75;
+      margin-top: 14px;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-height: 760px) {
+      body {
+        align-items: flex-start;
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
+
+      .cartao {
+        padding: 17px 18px;
+      }
+
+      .gatinho {
+        max-height: 135px;
+        max-width: 165px;
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+
+      .texto {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .botoes {
+        margin-top: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pagina {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <audio id="musica1" loop preload="auto">
+    <source src="musicas/love.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="musica2" loop preload="auto">
+    <source src="musicas/best-part.mp3" type="audio/mpeg">
+  </audio>
+
+  <main id="carta">
+
+    <section class="pagina ativa">
+      <div class="cartao">
+        <img class="gatinho" src="imagens/gatin.gif" alt="gatinho fofo">
+        <div class="etiqueta">uma cartinha pra ti</div>
+        <h1>um pouquinho sobre mim 🤎</h1>
+        <p class="texto">amor, fiz isso aqui porque acho que poucas vezes falei sobre mim contigo.
+
+tem umas coisas que eu queria te contar, então vem ler.</p>
+        <div class="botoes">
+          <button onclick="comecar()">Começar ♡</button>
+        </div>
+        <p class="aviso-musica">coloca o som baixinho e vem ler</p>
+      </div>
+    </section>
+
+    <section class="pagina">
+      <div class="cartao">
+        <img class="gatinho" src="imagens/gatin.gif" alt="gatinho fofo">
+        <div class="etiqueta">parte 01</div>
+        <h1>minha vida nada emocionante</h1>
+        <p class="texto">amor, acho que poucas vezes falei sobre mim, não porque queira esconder algo, mas por achar meio chato as coisas sobre mim.
+
+tipo, até vir pra cá pra SLZ eu só comia terra e estudava.
+
+tô brincando KKKKKK.
+
+mas eu meio que só era trabalho, casa, igreja. não tinha eventos interessantes na minha vida, eu sempre fui assim, na minha.</p>
+        <div class="botoes">
+          <button class="secundario" onclick="voltar()">Voltar</button>
+          <button onclick="avancar()">Continuar →</button>
+        </div>
+        <div class="contador"></div>
+      </div>
+    </section>
+
+    <section class="pagina">
+      <div class="cartao">
+        <img class="gatinho" src="imagens/gatin.gif" alt="gatinho fofo">
+        <div class="etiqueta">parte 02</div>
+        <h1>mas eu também saía, viu KKKK</h1>
+        <p class="texto">mas sempre gostei de sair. eu me enfiava no submundo do Reviver com Moisés, com Fihama e companhia KAKAKAKAK.
+
+já até fui pro pagode. bom, eu não danço, mas até que a música não é tãoooo ruim assim.</p>
+        <div class="botoes">
+          <button class="secundario" onclick="voltar()">Voltar</button>
+          <button onclick="avancar()">Continuar →</button>
+        </div>
+        <div class="contador"></div>
+      </div>
+    </section>
+
+    <section class="pagina">
+      <div class="cartao">
+        <img class="gatinho" src="imagens/gatin.gif" alt="gatinho fofo">
+        <div class="etiqueta">parte 03</div>
+        <h1>tem uma coisa que talvez tu não saiba</h1>
+        <p class="texto">eu acho que nunca te falei que tu é a primeira namorada que eu tenho.
+
+tipo, eu namorei um mês e um pouquinho com uma menina, mas eu nem conto KKKKKK.
+
+e homens nenhum. não achei nenhum interessante o suficiente pra querer algo ou apresentar pra família.
+
+e eu quero te apresentar, se tu quiser e se sentir confortável.</p>
+        <div class="botoes">
+          <button class="secundario" onclick="voltar()">Voltar</button>
+          <button onclick="avancar()">Continuar →</button>
+        </div>
+        <div class="contador"></div>
+      </div>
+    </section>
+
+    <section class="pagina">
+      <div class="cartao">
+        <img class="gatinho" src="imagens/gatin.gif" alt="gatinho fofo">
+        <div class="etiqueta">parte 04</div>
+        <h1>quero que a gente possa conversar</h1>
+        <p class="texto">e talvez a gente não seja pra sempre. não sei, eu quero, mas se em algum momento não for mais algo que tu queira, ou que não esteja sendo bom pra nós, a gente senta e conversa e vê o que dá.
+
+eu sempre tô disponível pra tu falar sobre tudo, bom ou ruim, conversar sobre nós e nosso relacionamento.
+
+ou se eu estiver te sufocando, fazendo algo que tu não queira ou que tu queira que eu mude, pode falar comigo.</p>
+        <div class="botoes">
+          <button class="secundario" onclick="voltar()">Voltar</button>
+          <button onclick="avancar()">Continuar →</button>
+        </div>
+        <div class="contador"></div>
+      </div>
+    </section>
+
+    <section class="pagina">
+      <div class="cartao">
+        <img class="gatinho" src="imagens/gatin.gif" alt="gatinho fofo">
+        <div class="etiqueta">parte 05</div>
+        <h1>eu sou meio desligada às vezes KKKK</h1>
+        <p class="texto">pq a gente não briga, e isso pode parecer chato, digo o fato de nunca brigar. e às vezes eu sou meio despercebida das coisas.
+
+por exemplo, tenho quase certeza que tu me falou que não gosta muito de Bis, e eu te dei um.
+
+e eu erro a letra de qualquer música, mesmo tendo ouvido ela milhares de vezes. sou péssima pra lembrar a letra, mesmo amando ouvir música.
+
+mesmo que eu cante lendo a letra, na próxima vez eu vou errar a letra da música KKKKKK.</p>
+        <div class="botoes">
+          <button class="secundario" onclick="voltar()">Voltar</button>
+          <button onclick="avancar()">Continuar →</button>
+        </div>
+        <div class="contador"></div>
+      </div>
+    </section>
+
+    <section class="pagina">
+      <div class="cartao">
+        <img class="gatinho" src="imagens/gatin.gif" alt="gatinho fofo">
+        <div class="etiqueta">parte 06</div>
+        <h1>nosso programa de casalzinho</h1>
+        <p class="texto">e eu sinto que a gente não tem saído muito assim.
+
+tipo, eu gosto de ficar de casalzinho em casa, mas sei que tu gosta de sair e beber cerveja. eu não me importo de sair contigo pra um lugar e beber, posso beber gin de 10 sem problemas KKKKKK.
+
+aquele Bar do Porto, por exemplo, eu acho a vista bonitinha.
+
+e isso nunca vai ser problema pra mim.</p>
+        <div class="botoes">
+          <button class="secundario" onclick="voltar()">Voltar</button>
+          <button onclick="avancar()">Continuar →</button>
+        </div>
+        <div class="contador"></div>
+      </div>
+    </section>
+
+    <section class="pagina">
+      <div class="cartao">
+        <img class="gatinho" src="imagens/gatin.gif" alt="gatinho fofo">
+        <div class="etiqueta">parte 07</div>
+        <h1>teu cheiro é outra história</h1>
+        <p class="texto">só sou chatinha porque não gosto de beber cerveja.
+
+mas teu cheiro com cheiro de cerveja me embriaga, mas de um jeito bom.
+
+eu gosto honestamente. 🤎</p>
+        <div class="botoes">
+          <button class="secundario" onclick="voltar()">Voltar</button>
+          <button onclick="avancar()">Continuar →</button>
+        </div>
+        <div class="contador"></div>
+      </div>
+    </section>
+
+    <section class="pagina">
+      <div class="cartao">
+        <img class="gatinho" src="imagens/gatin.gif" alt="gatinho fofo">
+        <div class="etiqueta">parte 08</div>
+        <h1>cafés superfaturados de SLZ</h1>
+        <p class="texto">algo que eu gosto muito de fazer é ir em cafés superfaturados daqui de SLZ.
+
+e eu quero te levar em todos, ruins e bons, pra gente falar mal e falar bem KKKKKK.
+
+quero ter esses momentos contigo, até os mais bobos.</p>
+        <div class="botoes">
+          <button class="secundario" onclick="voltar()">Voltar</button>
+          <button onclick="avancar()">Continuar →</button>
+        </div>
+        <div class="contador"></div>
+      </div>
+    </section>
+
+    <section class="pagina">
+      <div class="cartao">
+        <img class="gatinho" src="imagens/gatin.gif" alt="gatinho fofo">
+        <div class="etiqueta">parte 09</div>
+        <h1>quero viver essas coisinhas contigo</h1>
+        <p class="texto">quero ir naqueles eventos de canoagem de manhã cedo e no fim da tarde, fazer trilha se tu gostar, pegar sol na praia ou ficar na pracinha.
+
+tanto faz.
+
+desde que seja contigo. 🤎</p>
+        <div class="coracao">♡</div>
+        <div class="botoes">
+          <button class="secundario" onclick="voltar()">Voltar</button>
+          <button onclick="avancar()">Continuar →</button>
+        </div>
+        <div class="contador"></div>
+      </div>
+    </section>
+
+    <section class="pagina">
+      <div class="cartao">
+        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
+        <div class="etiqueta">fim da cartinha</div>
+        <h1>é isso, meu amor 🤎</h1>
+        <p class="texto">não sei muito bem como terminar isso aqui, então vou terminar do jeito mais sincero que consigo:
+
+eu quero viver essas coisas contigo.
+
+as coisas grandes, as pequenas, os rolês aleatórios, os cafés caros e até os dias em que a gente só fica em casa sem fazer nada.
+
+porque, no fim, tanto faz, desde que seja contigo.</p>
+        <div class="coracao">♡</div>
+        <div class="botoes">
+          <button class="secundario" onclick="voltar()">Voltar</button>
+          <button onclick="reiniciar()">Ler de novo ↻</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const paginas = [...document.querySelectorAll(".pagina")];
+    const musica1 = document.getElementById("musica1");
+    const musica2 = document.getElementById("musica2");
+
+    let atual = 0;
+    let musicaIniciada = false;
+    let faixaAtual = 1;
+
+    function atualizar() {
+      paginas.forEach((pagina, i) => {
+        pagina.classList.toggle("ativa", i === atual);
+      });
+
+      document.querySelectorAll(".contador").forEach(el => {
+        el.textContent = `${atual} / ${paginas.length - 1}`;
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // A segunda música começa na parte 05.
+      if (musicaIniciada && atual >= 5 && faixaAtual !== 2) {
+        trocarMusica(2);
+      } else if (musicaIniciada && atual < 5 && faixaAtual !== 1) {
+        trocarMusica(1);
+      }
+    }
+
+    async function comecar() {
+      musicaIniciada = true;
+      atual = 1;
+      atualizar();
+      await tocarMusica(faixaAtual);
+    }
+
+    async function tocarMusica(numero) {
+      const escolhida = numero === 1 ? musica1 : musica2;
+      const outra = numero === 1 ? musica2 : musica1;
+
+      outra.pause();
+
+      try {
+        await escolhida.play();
+      } catch (erro) {
+        console.log("A música não conseguiu iniciar:", erro);
+      }
+    }
+
+    function trocarMusica(numero) {
+      faixaAtual = numero;
+      const escolhida = numero === 1 ? musica1 : musica2;
+      const outra = numero === 1 ? musica2 : musica1;
+
+      outra.pause();
+      escolhida.currentTime = 0;
+      tocarMusica(numero);
+    }
+
+    function avancar() {
+      if (atual < paginas.length - 1) {
+        atual++;
+        atualizar();
+      }
+    }
+
+    function voltar() {
+      if (atual > 0) {
+        atual--;
+        atualizar();
+      }
+    }
+
+    function reiniciar() {
+      atual = 0;
+      musicaIniciada = false;
+      musica1.pause();
+      musica2.pause();
+      musica1.currentTime = 0;
+      musica2.currentTime = 0;
+      faixaAtual = 1;
+      atualizar();
+    }
+
+    atualizar();
+  </script>
+
+</body>
+</html>
