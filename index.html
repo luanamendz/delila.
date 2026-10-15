@@ -1,410 +1,400 @@
-
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f4e5d5">
-<title>uma cartinha pra ti 🤎</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4e5d5">
+  <title>♡</title>
 
-<style>
-:root {
-  --fundo: #f4e5d5;
-  --cartao: #fff8ef;
-  --marrom: #684b3b;
-  --detalhe: #bd8d70;
-  --botao: #9b7158;
-}
+  <style>
+    :root {
+      --fundo: #f4e5d5;
+      --cartao: #fff8ef;
+      --texto: #684b3b;
+      --destaque: #a66e62;
+      --botao: #81594a;
+      --botao-texto: #fff8ef;
+    }
 
-* {
-  box-sizing: border-box;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-html {
-  min-height: 100%;
-  background: var(--fundo);
-  -webkit-text-size-adjust: 100%;
-}
+    html {
+      min-height: 100%;
+      background: var(--fundo);
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  min-height: 100dvh;
-  padding:
-    max(18px, env(safe-area-inset-top))
-    max(15px, env(safe-area-inset-right))
-    max(24px, env(safe-area-inset-bottom))
-    max(15px, env(safe-area-inset-left));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--fundo);
-  color: var(--marrom);
-  font-family: Georgia, "Times New Roman", serif;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding:
+        max(20px, env(safe-area-inset-top))
+        16px
+        max(24px, env(safe-area-inset-bottom));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--fundo);
+      color: var(--texto);
+      font-family: Georgia, "Times New Roman", serif;
+    }
 
-#carta {
-  width: 100%;
-}
+    .container {
+      width: 100%;
+      max-width: 520px;
+      margin: auto;
+    }
 
-.pagina {
-  display: none;
-  width: 100%;
-  max-width: 520px;
-  margin: 0 auto;
-  animation: aparecer .3s ease;
-}
+    .tela {
+      display: none;
+      width: 100%;
+      animation: aparecer 0.45s ease;
+    }
 
-.pagina.ativa {
-  display: block;
-}
+    .tela.ativa {
+      display: block;
+    }
 
-.cartao {
-  width: 100%;
-  padding: 25px 23px;
-  background: var(--cartao);
-  border: 1px solid #e7d2bd;
-  border-radius: 26px;
-  box-shadow: 0 8px 25px #8b654019;
-}
+    .cartao {
+      width: 100%;
+      padding: 25px 20px;
+      background: var(--cartao);
+      border: 1px solid rgba(129, 89, 74, 0.12);
+      border-radius: 24px;
+      box-shadow: 0 8px 28px rgba(104, 75, 59, 0.09);
+      text-align: center;
+    }
 
-.gatinho {
-  display: block;
-  width: min(100%, 260px);
-  max-height: 220px;
-  object-fit: contain;
-  margin: 0 auto 22px;
-  border-radius: 18px;
-}
+    .gatinho {
+      display: block;
+      width: min(100%, 245px);
+      max-height: 200px;
+      object-fit: contain;
+      margin: 0 auto 20px;
+      border-radius: 12px;
+    }
 
-.texto {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 18px;
-  font-weight: normal;
-  line-height: 1.75;
-  text-align: left;
-  white-space: pre-line;
-  overflow-wrap: anywhere;
-  margin: 0;
-}
+    .carta {
+      margin: 0;
+      text-align: left;
+      font-size: 17px;
+      line-height: 1.7;
+      overflow-wrap: break-word;
+      white-space: pre-line;
+    }
 
-.botoes {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 25px;
-}
+    .abertura {
+      margin-bottom: 14px;
+      color: var(--destaque);
+      font-size: 17px;
+      line-height: 1.6;
+      text-align: left;
+    }
 
-button {
-  min-height: 50px;
-  padding: 13px 23px;
-  border: 0;
-  border-radius: 30px;
-  background: var(--botao);
-  color: white;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
+    .botoes {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
 
-button.secundario {
-  background: #ead8c6;
-  color: var(--marrom);
-}
+    button {
+      min-height: 50px;
+      padding: 13px 22px;
+      border: none;
+      border-radius: 15px;
+      background: var(--botao);
+      color: var(--botao-texto);
+      font-family: inherit;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-button:active {
-  transform: scale(.98);
-}
+    button:active {
+      transform: scale(0.97);
+    }
 
-.contador {
-  margin-top: 18px;
-  text-align: center;
-  font: 12px Arial, sans-serif;
-  color: #aa8b74;
-}
+    button.secundario {
+      background: #ead8c8;
+      color: var(--texto);
+    }
 
-.aviso-musica {
-  margin: 17px 0 0;
-  text-align: center;
-  font: 14px Arial, sans-serif;
-  color: #a58a75;
-}
+    button:focus-visible {
+      outline: 2px solid var(--destaque);
+      outline-offset: 3px;
+    }
 
-.final {
-  text-align: center;
-}
+    .capa .cartao {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
 
-.coracao {
-  color: #b87c70;
-  font-size: 27px;
-  margin-top: 18px;
-}
+    .capa .gatinho {
+      width: min(100%, 270px);
+      max-height: 230px;
+      margin-bottom: 24px;
+    }
 
-@keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    .capa .botoes {
+      margin-top: 0;
+    }
 
-@media (max-width: 430px) {
-  .cartao {
-    padding: 23px 20px;
-  }
+    .capa button {
+      min-width: 160px;
+    }
 
-  .gatinho {
-    width: min(100%, 245px);
-    max-height: 200px;
-  }
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(7px);
+      }
 
-  .texto {
-    font-size: 17px;
-    line-height: 1.7;
-  }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-  .botoes button {
-    flex: 1;
-  }
-}
+    @media (max-width: 380px) {
+      body {
+        padding-left: 11px;
+        padding-right: 11px;
+      }
 
-@media (max-height: 700px) {
-  body {
-    align-items: flex-start;
-  }
+      .cartao {
+        padding: 20px 16px;
+      }
 
-  .cartao {
-    padding-top: 18px;
-    padding-bottom: 18px;
-  }
+      .carta,
+      .abertura {
+        font-size: 16px;
+      }
 
-  .gatinho {
-    width: min(100%, 190px);
-    max-height: 145px;
-    margin-bottom: 15px;
-  }
-}
+      .gatinho {
+        max-height: 175px;
+      }
 
-@media (prefers-reduced-motion: reduce) {
-  .pagina {
-    animation: none;
-  }
-}
-</style>
+      button {
+        padding: 12px 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tela {
+        animation: none;
+      }
+
+      button {
+        transition: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <main class="container">
 
-<audio id="musica1" loop preload="none">
-  <source src="musicas/love.mp3" type="audio/mpeg">
-</audio>
+    <!-- CAPA -->
+    <section class="tela capa ativa" id="capa">
+      <div class="cartao">
+        <img
+          class="gatinho"
+          src="gif/gatin.gif"
+          alt="Gatinho fofo"
+        >
 
-<audio id="musica2" loop preload="none">
-  <source src="musicas/best-part.mp3" type="audio/mpeg">
-</audio>
-
-<main id="carta">
-
-  <!-- CAPA -->
-  <section class="pagina ativa">
-    <div class="cartao">
-      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-      <div class="botoes">
-        <button onclick="comecar()">Começar ♡</button>
+        <div class="botoes">
+          <button type="button" onclick="comecar()">
+            Começar ♡
+          </button>
+        </div>
       </div>
-      <p class="aviso-musica">coloca o som baixinho e vem ler</p>
-    </div>
-  </section>
+    </section>
 
-  <!-- PRIMEIRA PARTE -->
-  <section class="pagina">
-    <div class="cartao">
-      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
+    <!-- TELA 1 -->
+    <section class="tela" id="tela1">
+      <div class="cartao">
+        <img class="gatinho" src="gif/gatin.gif" alt="Gatinho fofo">
 
-      <p class="texto">amor, acho que poucas vezes falei sobre mim, não por que queira esconder algo, mas por achar meio chato as coisas sobre mim, tipo até vir pra cá pra slz eu só comia terra e estudava, tô brincando kkkk, mas eu meio q só era trabalho, casa, igreja, não tinha eventos interessantes na minha vida, eu sempre fui assim na minha, mas sempre gostei de sair, eu me enfiava no submundo do reviver com moisés, com fihama e companhia kakakkakak, já até fui pro pagode, bom, eu não danço, mas até que a música não é tãoooo ruim assim.</p>
+        <p class="abertura">
+          oi, o jornal da record de hoje apresenta luana e companhia
+        </p>
 
-      <div class="botoes">
-        <button class="secundario" onclick="voltar()">Voltar</button>
-        <button onclick="avancar()">Continuar →</button>
+        <p class="carta">amor, vou começar falando sobre mim dessa vez, meio chato confesso, acho que poucas vezes falei sobre mim, não por que queira esconder algo, mas por achar meio chato as coisas sobre mim, tipo até vir pra cá pra slz eu só comia terra e estudava, tô brincando kkkk, mas eu meio q só era trabalho, casa, igreja, e ficar papeando na praça com minhas amigas, não tinha eventos interessantes na minha vida, eu sempre fui assim quieta na minha, eu vim pra cá pra slz primeiro pra vender livros, deu errado como podemos ver, e eu fui pra faculdade dps q ganhei a bolsa, e nossa agradeço a Deus, pq certeza que eu já tinha morrido em algum beco de são luís, e eu passei 1 ano em casa só jogando videogame porq não conhecia ninguém aqui, só na faculdade e hj em dia que saio com mais frequência, só moro a 3 anos aqui 2 deles na salvatore, credo.</p>
+
+        <div class="botoes">
+          <button type="button" onclick="voltarCapa()" class="secundario">Voltar</button>
+          <button type="button" onclick="irPara(2)">Continuar ♡</button>
+        </div>
       </div>
-      <div class="contador"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SEGUNDA PARTE -->
-  <section class="pagina">
-    <div class="cartao">
-      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
+    <!-- TELA 2 -->
+    <section class="tela" id="tela2">
+      <div class="cartao">
+        <img class="gatinho" src="gif/gatin.gif" alt="Gatinho fofo">
 
-      <p class="texto">e eu acho que nunca te falei, que tu é a primeira namorada que eu tenho, tipo eu namorei 1 mês e um pouquinho com uma menina, mas eu nem conto, e homens nenhum, não achei nenhum interessante suficiente pra querer algo, ou apresentar pra família, e eu quero te apresentar se tu quiser e se sentir confortável.</p>
+        <p class="carta">eu me enfiava no submundo do reviver com moisés, com fihama e companhia kakakkakak, ou tava no calhau com lauren, já até fui pro pagode, bom, eu não danço, mas até que a música não é tãoooo ruim assim, e eu sempre gostei de carrinhos, então tu acertou em cheio no presente, eu tenho um mustang guardado, e eu deixei todos meus "brinquedos" no interior quando vim, tenho uns dinossaurinhos que eu brincava, e uns que eles meio que se desmontam, sempre gostei dessas coisinhas, eu tinha uma caixa cheia.</p>
 
-      <div class="botoes">
-        <button class="secundario" onclick="voltar()">Voltar</button>
-        <button onclick="avancar()">Continuar →</button>
+        <div class="botoes">
+          <button type="button" onclick="irPara(1)" class="secundario">Voltar</button>
+          <button type="button" onclick="irPara(3)">Continuar ♡</button>
+        </div>
       </div>
-      <div class="contador"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- TERCEIRA PARTE -->
-  <section class="pagina">
-    <div class="cartao">
-      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
+    <!-- TELA 3 -->
+    <section class="tela" id="tela3">
+      <div class="cartao">
+        <img class="gatinho" src="gif/gatin.gif" alt="Gatinho fofo">
 
-      <p class="texto">e talvez a gente não seja pra sempre, não sei, eu quero, mas se em algum momento não for mais algo que tu queira, ou que não esteja sendo bom pra nós, a gente senta e conversa e vê o que dá, eu sempre tô disponível pra tu falar sobre tudo, bom ou ruim, conversar sobre nós e nosso relacionamento, ou se eu estiver te sufocando ou fazendo algo que tu não queira, ou que tu queira que eu mude, pq não brigamos e então isso pode parecer chato, o fato de nunca brigar digo, e as vezes eu sou meio despercebida das coisas, por exemplo tenho quase certeza q tu me falou que não gosta muito de bis, e eu te dei um, e eu erro a letra de qualquer musica mesmo eu tendo ouvido ela milhares de vezes, sou péssima pra lembrar a letra mesmo amando ouvir música, mesmo que eu cante lendo a letra, na próxima vez eu vou errar a letra da musica.</p>
+        <p class="carta">também eu acho que nunca te falei, que tu é a primeira namorada que eu tenho, tipo eu namorei 1 mês e um pouquinho com uma menina, mas eu nem conto, e homens nenhum, não achei nenhum interessante suficiente pra querer algo, ou apresentar pra família, e eu quero te apresentar se tu quiser e se sentir confortável.</p>
 
-      <div class="botoes">
-        <button class="secundario" onclick="voltar()">Voltar</button>
-        <button onclick="avancar()">Continuar →</button>
+        <div class="botoes">
+          <button type="button" onclick="irPara(2)" class="secundario">Voltar</button>
+          <button type="button" onclick="irPara(4)">Continuar ♡</button>
+        </div>
       </div>
-      <div class="contador"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- QUARTA PARTE -->
-  <section class="pagina">
-    <div class="cartao">
-      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
+    <!-- TELA 4 -->
+    <section class="tela" id="tela4">
+      <div class="cartao">
+        <img class="gatinho" src="gif/gatin.gif" alt="Gatinho fofo">
 
-      <p class="texto">e eu sinto que a gente não tem saído muito assim, tipo gosto de ficar de casalzinho em casa, mas sei que tu gosta de sair e beber cerveja e eu não me importo de sair contigo pra um lugar e beber, posso beber gin de 10 sem problemas, aquele bar do porto eu acho a vista bonitinha por exemplo, e isso nunca vai ser problema pra mim, só sou chatinha pq não gosto de beber cerveja, mas teu cheiro com cheiro de cerveja me embriaga, mas de um jeito bom, eu gosto honestamente.</p>
+        <p class="carta">e talvez a gente não seja pra sempre, não sei, eu quero, mas se em algum momento não for mais algo que tu queira, ou que não esteja sendo bom pra nós, a gente senta e conversa e vê o que dá, eu sempre tô disponível pra tu falar sobre tudo, bom ou ruim, conversar sobre nós e nosso relacionamento, ou se eu estiver te sufocando ou fazendo algo que tu não queira, ou que tu queira que eu mude, pq não brigamos e então isso pode parecer chato, o fato de nunca brigar digo, e as vezes eu sou meio despercebida das coisas, por exemplo tenho quase certeza q tu me falou que não gosta muito de bis, e eu te dei um, e eu erro a letra de qualquer musica mesmo eu tendo ouvido ela milhares de vezes, sou péssima pra lembrar a letra mesmo amando ouvir música, mesmo que eu cante lendo a letra, na próxima vez eu vou errar a letra da musica.</p>
 
-      <div class="botoes">
-        <button class="secundario" onclick="voltar()">Voltar</button>
-        <button onclick="avancar()">Continuar →</button>
+        <div class="botoes">
+          <button type="button" onclick="irPara(3)" class="secundario">Voltar</button>
+          <button type="button" onclick="irPara(5)">Continuar ♡</button>
+        </div>
       </div>
-      <div class="contador"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- QUINTA PARTE -->
-  <section class="pagina">
-    <div class="cartao">
-      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
+    <!-- TELA 5 -->
+    <section class="tela" id="tela5">
+      <div class="cartao">
+        <img class="gatinho" src="gif/gatin.gif" alt="Gatinho fofo">
 
-      <p class="texto">e algo que eu gosto muito de ir é em cafés superfaturados daqui de slz, e eu quero te levar em todos, ruins e bons pra gente falar mal e falar bem, ir naqueles eventos de canoagem inicio da manhã e fim de tarde, fazer trilha se tu gostar, ou pegar sol na praia, ou ficar na pracinha tanto faz desde que seja contigo.</p>
+        <p class="carta">e eu sinto que a gente não tem saído muito assim, tipo gosto de ficar de casalzinho em casa, mas sei que tu gosta de sair e beber cerveja e eu não me importo de sair contigo pra um lugar e beber, posso beber gin de 10 sem problemas, aquele bar do porto eu acho a vista bonitinha por exemplo, e isso nunca vai ser problema pra mim, só sou chatinha pq não gosto de beber cerveja, mas teu cheiro com cheiro de cerveja me embriaga, mas de um jeito bom, eu gosto honestamente.</p>
 
-      <div class="botoes">
-        <button class="secundario" onclick="voltar()">Voltar</button>
-        <button onclick="avancar()">Continuar →</button>
+        <div class="botoes">
+          <button type="button" onclick="irPara(4)" class="secundario">Voltar</button>
+          <button type="button" onclick="irPara(6)">Continuar ♡</button>
+        </div>
       </div>
-      <div class="contador"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FINAL -->
-  <section class="pagina">
-    <div class="cartao final">
-      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
+    <!-- TELA 6 -->
+    <section class="tela" id="tela6">
+      <div class="cartao">
+        <img class="gatinho" src="gif/gatin.gif" alt="Gatinho fofo">
 
-      <p class="texto">tanto faz, desde que seja contigo. 🤎</p>
+        <p class="carta">e algo que eu gosto muito de ir é em cafés superfaturados daqui de slz, e eu quero te levar em todos, ruins e bons pra gente falar mal e falar bem, ir naqueles eventos de canoagem inicio da manhã e fim de tarde, fazer trilha se tu gostar, ou pegar sol na praia, ou ficar na pracinha tanto faz desde que seja contigo.</p>
 
-      <div class="coracao">♡</div>
-
-      <div class="botoes">
-        <button class="secundario" onclick="voltar()">Voltar</button>
-        <button onclick="reiniciar()">Ler de novo ↻</button>
+        <div class="botoes">
+          <button type="button" onclick="irPara(5)" class="secundario">Voltar</button>
+          <button type="button" onclick="finalizar()">Ler de novo ♡</button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+    <!-- MÚSICAS -->
+    <audio id="musica1" preload="auto" loop>
+      <source src="musicas/love.mp3" type="audio/mpeg">
+    </audio>
 
-<script>
-const paginas = Array.from(document.querySelectorAll(".pagina"));
-const musica1 = document.getElementById("musica1");
-const musica2 = document.getElementById("musica2");
+    <audio id="musica2" preload="auto" loop>
+      <source src="musicas/best-part.mp3" type="audio/mpeg">
+    </audio>
 
-let atual = 0;
-let musicaIniciada = false;
-let faixaAtual = 1;
+  </main>
 
-function atualizar() {
-  paginas.forEach((pagina, indice) => {
-    pagina.classList.toggle("ativa", indice === atual);
-  });
+  <script>
+    let telaAtual = 0;
+    let musicaAtual = 1;
 
-  document.querySelectorAll(".contador").forEach(elemento => {
-    elemento.textContent = `${atual} / ${paginas.length - 1}`;
-  });
+    const musica1 = document.getElementById("musica1");
+    const musica2 = document.getElementById("musica2");
 
-  if (musicaIniciada) {
-    if (atual >= 4 && faixaAtual !== 2) {
-      trocarMusica(2);
-    } else if (atual < 4 && faixaAtual !== 1) {
-      trocarMusica(1);
+    function mostrarTela(numero) {
+      document.querySelectorAll(".tela").forEach(function(tela) {
+        tela.classList.remove("ativa");
+      });
+
+      if (numero === 0) {
+        document.getElementById("capa").classList.add("ativa");
+      } else {
+        document.getElementById("tela" + numero).classList.add("ativa");
+      }
+
+      telaAtual = numero;
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
+    function tocarMusica(numero) {
+      if (numero === musicaAtual) {
+        const musica = numero === 1 ? musica1 : musica2;
 
-async function comecar() {
-  atual = 1;
-  musicaIniciada = true;
-  atualizar();
-  await tocarMusica(faixaAtual);
-}
+        if (musica.paused) {
+          musica.play().catch(function() {});
+        }
 
-async function tocarMusica(numero) {
-  const escolhida = numero === 1 ? musica1 : musica2;
-  const outra = numero === 1 ? musica2 : musica1;
+        return;
+      }
 
-  outra.pause();
+      musica1.pause();
+      musica2.pause();
 
-  try {
-    await escolhida.play();
-  } catch (erro) {
-    console.log("Não foi possível iniciar a música:", erro);
-  }
-}
+      musicaAtual = numero;
+      const musica = numero === 1 ? musica1 : musica2;
 
-function trocarMusica(numero) {
-  faixaAtual = numero;
+      musica.play().catch(function() {});
+    }
 
-  const escolhida = numero === 1 ? musica1 : musica2;
-  const outra = numero === 1 ? musica2 : musica1;
+    function comecar() {
+      mostrarTela(1);
 
-  outra.pause();
-  escolhida.currentTime = 0;
-  tocarMusica(numero);
-}
+      musicaAtual = 1;
+      musica1.volume = 0.65;
+      musica2.volume = 0.65;
 
-function avancar() {
-  if (atual < paginas.length - 1) {
-    atual++;
-    atualizar();
-  }
-}
+      musica1.play().catch(function() {
+        // Alguns navegadores podem bloquear a reprodução.
+        // Se acontecer, confira se o arquivo de música existe.
+      });
+    }
 
-function voltar() {
-  if (atual > 0) {
-    atual--;
-    atualizar();
-  }
-}
+    function irPara(numero) {
+      // A segunda música começa na última parte da carta.
+      if (numero === 6) {
+        tocarMusica(2);
+      } else if (numero === 1) {
+        tocarMusica(1);
+      }
 
-function reiniciar() {
-  atual = 0;
-  musicaIniciada = false;
-  faixaAtual = 1;
+      mostrarTela(numero);
+    }
 
-  musica1.pause();
-  musica2.pause();
+    function voltarCapa() {
+      musica1.pause();
+      musica2.pause();
+      mostrarTela(0);
+    }
 
-  musica1.currentTime = 0;
-  musica2.currentTime = 0;
-
-  atualizar();
-}
-
-atualizar();
-</script>
-
+    function finalizar() {
+      musica2.pause();
+      musica1.currentTime = 0;
+      musica2.currentTime = 0;
+      musicaAtual = 1;
+      mostrarTela(0);
+    }
+  </script>
 </body>
 </html>
+```
