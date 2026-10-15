@@ -2,558 +2,409 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f4e5d5">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>uma cartinha pra ti 🤎</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4e5d5">
+<title>uma cartinha pra ti 🤎</title>
 
-  <style>
-    :root {
-      --fundo: #f4e5d5;
-      --cartao: #fff8ef;
-      --marrom: #684b3b;
-      --detalhe: #bd8d70;
-      --botao: #9b7158;
-    }
+<style>
+:root {
+  --fundo: #f4e5d5;
+  --cartao: #fff8ef;
+  --marrom: #684b3b;
+  --detalhe: #bd8d70;
+  --botao: #9b7158;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    html {
-      min-height: 100%;
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-      background: var(--fundo);
-    }
+html {
+  min-height: 100%;
+  background: var(--fundo);
+  -webkit-text-size-adjust: 100%;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      min-height: 100dvh;
-      padding:
-        max(20px, env(safe-area-inset-top))
-        max(16px, env(safe-area-inset-right))
-        max(24px, env(safe-area-inset-bottom))
-        max(16px, env(safe-area-inset-left));
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: var(--fundo);
-      color: var(--marrom);
-      font-family: Georgia, "Times New Roman", serif;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding:
+    max(18px, env(safe-area-inset-top))
+    max(15px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom))
+    max(15px, env(safe-area-inset-left));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fundo);
+  color: var(--marrom);
+  font-family: Georgia, "Times New Roman", serif;
+}
 
-    #carta {
-      width: 100%;
-    }
+#carta {
+  width: 100%;
+}
 
-    .pagina {
-      display: none;
-      width: 100%;
-      max-width: 560px;
-      margin: 0 auto;
-      animation: aparecer 0.35s ease;
-    }
+.pagina {
+  display: none;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  animation: aparecer .3s ease;
+}
 
-    .pagina.ativa {
-      display: block;
-    }
+.pagina.ativa {
+  display: block;
+}
 
-    .cartao {
-      width: 100%;
-      background: var(--cartao);
-      border: 1px solid #e7d2bd;
-      border-radius: 28px;
-      padding: clamp(24px, 6vw, 38px);
-      text-align: center;
-      box-shadow: 0 8px 25px #8b654019;
-    }
+.cartao {
+  width: 100%;
+  padding: 25px 23px;
+  background: var(--cartao);
+  border: 1px solid #e7d2bd;
+  border-radius: 26px;
+  box-shadow: 0 8px 25px #8b654019;
+}
 
-    .gatinho {
-      display: block;
-      width: min(100%, 300px);
-      max-height: 260px;
-      object-fit: contain;
-      margin: 0 auto 24px;
-      border-radius: 20px;
-    }
+.gatinho {
+  display: block;
+  width: min(100%, 260px);
+  max-height: 220px;
+  object-fit: contain;
+  margin: 0 auto 22px;
+  border-radius: 18px;
+}
 
-    .etiqueta {
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--detalhe);
-      margin-bottom: 12px;
-    }
+.texto {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.75;
+  text-align: left;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  margin: 0;
+}
 
-    h1 {
-      font-size: clamp(26px, 6vw, 34px);
-      font-weight: normal;
-      line-height: 1.3;
-      margin: 0 0 22px;
-    }
+.botoes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
 
-    .texto {
-      font-size: clamp(18px, 4.6vw, 21px);
-      line-height: 1.75;
-      text-align: left;
-      white-space: pre-line;
-      overflow-wrap: anywhere;
-      margin: 0;
-    }
+button {
+  min-height: 50px;
+  padding: 13px 23px;
+  border: 0;
+  border-radius: 30px;
+  background: var(--botao);
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    .botoes {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
+button.secundario {
+  background: #ead8c6;
+  color: var(--marrom);
+}
 
-    button {
-      min-height: 52px;
-      padding: 14px 25px;
-      border: 0;
-      border-radius: 30px;
-      background: var(--botao);
-      color: white;
-      font-family: Arial, sans-serif;
-      font-size: 17px;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-    }
+button:active {
+  transform: scale(.98);
+}
 
-    button:active {
-      transform: scale(0.98);
-    }
+.contador {
+  margin-top: 18px;
+  text-align: center;
+  font: 12px Arial, sans-serif;
+  color: #aa8b74;
+}
 
-    button.secundario {
-      color: var(--marrom);
-      background: #ead8c6;
-    }
+.aviso-musica {
+  margin: 17px 0 0;
+  text-align: center;
+  font: 14px Arial, sans-serif;
+  color: #a58a75;
+}
 
-    .contador {
-      margin-top: 20px;
-      color: #aa8b74;
-      font: 13px Arial, sans-serif;
-      letter-spacing: 1px;
-    }
+.final {
+  text-align: center;
+}
 
-    .coracao {
-      color: #b87c70;
-      font-size: 28px;
-      margin-top: 18px;
-    }
+.coracao {
+  color: #b87c70;
+  font-size: 27px;
+  margin-top: 18px;
+}
 
-    .aviso-musica {
-      font: 14px Arial, sans-serif;
-      line-height: 1.5;
-      color: #a58a75;
-      margin: 18px 0 0;
-    }
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    @keyframes aparecer {
-      from {
-        opacity: 0;
-        transform: translateY(7px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+@media (max-width: 430px) {
+  .cartao {
+    padding: 23px 20px;
+  }
 
-    @media (max-width: 430px) {
-      body {
-        align-items: center;
-      }
+  .gatinho {
+    width: min(100%, 245px);
+    max-height: 200px;
+  }
 
-      .cartao {
-        padding: 26px 22px;
-        border-radius: 26px;
-      }
+  .texto {
+    font-size: 17px;
+    line-height: 1.7;
+  }
 
-      .gatinho {
-        width: min(100%, 280px);
-        max-height: 240px;
-        margin-bottom: 22px;
-      }
+  .botoes button {
+    flex: 1;
+  }
+}
 
-      .texto {
-        line-height: 1.75;
-      }
+@media (max-height: 700px) {
+  body {
+    align-items: flex-start;
+  }
 
-      .botoes button {
-        flex: 1 1 auto;
-      }
-    }
+  .cartao {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
 
-    @media (max-height: 700px) {
-      body {
-        align-items: flex-start;
-      }
+  .gatinho {
+    width: min(100%, 190px);
+    max-height: 145px;
+    margin-bottom: 15px;
+  }
+}
 
-      .cartao {
-        padding-top: 20px;
-        padding-bottom: 20px;
-      }
-
-      .gatinho {
-        max-height: 170px;
-        width: min(100%, 220px);
-        margin-bottom: 14px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .pagina {
-        animation: none;
-      }
-    }
-  </style>
+@media (prefers-reduced-motion: reduce) {
+  .pagina {
+    animation: none;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Músicas: os arquivos ficam dentro da pasta musicas -->
-  <audio id="musica1" loop preload="none">
-    <source src="musicas/love.mp3" type="audio/mpeg">
-  </audio>
+<audio id="musica1" loop preload="none">
+  <source src="musicas/love.mp3" type="audio/mpeg">
+</audio>
 
-  <audio id="musica2" loop preload="none">
-    <source src="musicas/best-part.mp3" type="audio/mpeg">
-  </audio>
+<audio id="musica2" loop preload="none">
+  <source src="musicas/best-part.mp3" type="audio/mpeg">
+</audio>
 
-  <main id="carta">
+<main id="carta">
 
-    <!-- CAPA: só o gatinho e o botão -->
-    <section class="pagina ativa">
-      <div class="cartao">
-        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-
-        <div class="botoes">
-          <button onclick="comecar()">Começar ♡</button>
-        </div>
-
-        <p class="aviso-musica">coloca o som baixinho e vem ler</p>
+  <!-- CAPA -->
+  <section class="pagina ativa">
+    <div class="cartao">
+      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
+      <div class="botoes">
+        <button onclick="comecar()">Começar ♡</button>
       </div>
-    </section>
+      <p class="aviso-musica">coloca o som baixinho e vem ler</p>
+    </div>
+  </section>
 
-    <!-- PARTE 1 -->
-    <section class="pagina">
-      <div class="cartao">
-        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-        <div class="etiqueta">parte 01</div>
-        <h1>minha vida nada emocionante</h1>
+  <!-- PRIMEIRA PARTE -->
+  <section class="pagina">
+    <div class="cartao">
+      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
 
-        <p class="texto">amor, acho que poucas vezes falei sobre mim, não porque queira esconder algo, mas por achar meio chato as coisas sobre mim.
+      <p class="texto">amor, acho que poucas vezes falei sobre mim, não por que queira esconder algo, mas por achar meio chato as coisas sobre mim, tipo até vir pra cá pra slz eu só comia terra e estudava, tô brincando kkkk, mas eu meio q só era trabalho, casa, igreja, não tinha eventos interessantes na minha vida, eu sempre fui assim na minha, mas sempre gostei de sair, eu me enfiava no submundo do reviver com moisés, com fihama e companhia kakakkakak, já até fui pro pagode, bom, eu não danço, mas até que a música não é tãoooo ruim assim.</p>
 
-tipo, até vir pra cá pra SLZ eu só comia terra e estudava.
-
-tô brincando KKKKKK.
-
-mas eu meio que só era trabalho, casa, igreja. não tinha eventos interessantes na minha vida, eu sempre fui assim, na minha.</p>
-
-        <div class="botoes">
-          <button class="secundario" onclick="voltar()">← Voltar</button>
-          <button onclick="avancar()">Continuar →</button>
-        </div>
-        <div class="contador"></div>
+      <div class="botoes">
+        <button class="secundario" onclick="voltar()">Voltar</button>
+        <button onclick="avancar()">Continuar →</button>
       </div>
-    </section>
+      <div class="contador"></div>
+    </div>
+  </section>
 
-    <!-- PARTE 2 -->
-    <section class="pagina">
-      <div class="cartao">
-        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-        <div class="etiqueta">parte 02</div>
-        <h1>o submundo do Reviver KKKKK</h1>
+  <!-- SEGUNDA PARTE -->
+  <section class="pagina">
+    <div class="cartao">
+      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
 
-        <p class="texto">mas sempre gostei de sair. eu me enfiava no submundo do Reviver com Moisés, com Fihama e companhia KAKAKAKAK.
+      <p class="texto">e eu acho que nunca te falei, que tu é a primeira namorada que eu tenho, tipo eu namorei 1 mês e um pouquinho com uma menina, mas eu nem conto, e homens nenhum, não achei nenhum interessante suficiente pra querer algo, ou apresentar pra família, e eu quero te apresentar se tu quiser e se sentir confortável.</p>
 
-já até fui pro pagode. bom, eu não danço, mas até que a música não é tãoooo ruim assim.</p>
-
-        <div class="botoes">
-          <button class="secundario" onclick="voltar()">← Voltar</button>
-          <button onclick="avancar()">Continuar →</button>
-        </div>
-        <div class="contador"></div>
+      <div class="botoes">
+        <button class="secundario" onclick="voltar()">Voltar</button>
+        <button onclick="avancar()">Continuar →</button>
       </div>
-    </section>
+      <div class="contador"></div>
+    </div>
+  </section>
 
-    <!-- PARTE 3 -->
-    <section class="pagina">
-      <div class="cartao">
-        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-        <div class="etiqueta">parte 03</div>
-        <h1>tu é a primeira 🤎</h1>
+  <!-- TERCEIRA PARTE -->
+  <section class="pagina">
+    <div class="cartao">
+      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
 
-        <p class="texto">e eu acho que nunca te falei que tu é a primeira namorada que eu tenho.
+      <p class="texto">e talvez a gente não seja pra sempre, não sei, eu quero, mas se em algum momento não for mais algo que tu queira, ou que não esteja sendo bom pra nós, a gente senta e conversa e vê o que dá, eu sempre tô disponível pra tu falar sobre tudo, bom ou ruim, conversar sobre nós e nosso relacionamento, ou se eu estiver te sufocando ou fazendo algo que tu não queira, ou que tu queira que eu mude, pq não brigamos e então isso pode parecer chato, o fato de nunca brigar digo, e as vezes eu sou meio despercebida das coisas, por exemplo tenho quase certeza q tu me falou que não gosta muito de bis, e eu te dei um, e eu erro a letra de qualquer musica mesmo eu tendo ouvido ela milhares de vezes, sou péssima pra lembrar a letra mesmo amando ouvir música, mesmo que eu cante lendo a letra, na próxima vez eu vou errar a letra da musica.</p>
 
-tipo, eu namorei um mês e um pouquinho com uma menina, mas eu nem conto KKKKKK.
-
-e homens nenhum. não achei nenhum interessante o suficiente pra querer algo ou apresentar pra família.
-
-e eu quero te apresentar, se tu quiser e se sentir confortável.</p>
-
-        <div class="botoes">
-          <button class="secundario" onclick="voltar()">← Voltar</button>
-          <button onclick="avancar()">Continuar →</button>
-        </div>
-        <div class="contador"></div>
+      <div class="botoes">
+        <button class="secundario" onclick="voltar()">Voltar</button>
+        <button onclick="avancar()">Continuar →</button>
       </div>
-    </section>
+      <div class="contador"></div>
+    </div>
+  </section>
 
-    <!-- PARTE 4 -->
-    <section class="pagina">
-      <div class="cartao">
-        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-        <div class="etiqueta">parte 04</div>
-        <h1>quero que a gente possa conversar</h1>
+  <!-- QUARTA PARTE -->
+  <section class="pagina">
+    <div class="cartao">
+      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
 
-        <p class="texto">e talvez a gente não seja pra sempre, não sei. eu quero, mas se em algum momento não for mais algo que tu queira, ou que não esteja sendo bom pra nós, a gente senta e conversa e vê o que dá.
+      <p class="texto">e eu sinto que a gente não tem saído muito assim, tipo gosto de ficar de casalzinho em casa, mas sei que tu gosta de sair e beber cerveja e eu não me importo de sair contigo pra um lugar e beber, posso beber gin de 10 sem problemas, aquele bar do porto eu acho a vista bonitinha por exemplo, e isso nunca vai ser problema pra mim, só sou chatinha pq não gosto de beber cerveja, mas teu cheiro com cheiro de cerveja me embriaga, mas de um jeito bom, eu gosto honestamente.</p>
 
-eu sempre tô disponível pra tu falar sobre tudo, bom ou ruim, conversar sobre nós e nosso relacionamento.
-
-ou se eu estiver te sufocando, fazendo algo que tu não queira ou que tu queira que eu mude, pode falar comigo.</p>
-
-        <div class="botoes">
-          <button class="secundario" onclick="voltar()">← Voltar</button>
-          <button onclick="avancar()">Continuar →</button>
-        </div>
-        <div class="contador"></div>
+      <div class="botoes">
+        <button class="secundario" onclick="voltar()">Voltar</button>
+        <button onclick="avancar()">Continuar →</button>
       </div>
-    </section>
+      <div class="contador"></div>
+    </div>
+  </section>
 
-    <!-- PARTE 5 -->
-    <section class="pagina">
-      <div class="cartao">
-        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-        <div class="etiqueta">parte 05</div>
-        <h1>eu sou meio desligada KKKKK</h1>
+  <!-- QUINTA PARTE -->
+  <section class="pagina">
+    <div class="cartao">
+      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
 
-        <p class="texto">pq a gente não briga, e então isso pode parecer chato, o fato de nunca brigar digo.
+      <p class="texto">e algo que eu gosto muito de ir é em cafés superfaturados daqui de slz, e eu quero te levar em todos, ruins e bons pra gente falar mal e falar bem, ir naqueles eventos de canoagem inicio da manhã e fim de tarde, fazer trilha se tu gostar, ou pegar sol na praia, ou ficar na pracinha tanto faz desde que seja contigo.</p>
 
-e às vezes eu sou meio despercebida das coisas. por exemplo, tenho quase certeza que tu me falou que não gosta muito de Bis, e eu te dei um.
-
-e eu erro a letra de qualquer música, mesmo tendo ouvido ela milhares de vezes. sou péssima pra lembrar a letra, mesmo amando ouvir música.
-
-mesmo que eu cante lendo a letra, na próxima vez eu vou errar a letra da música KKKKKK.</p>
-
-        <div class="botoes">
-          <button class="secundario" onclick="voltar()">← Voltar</button>
-          <button onclick="avancar()">Continuar →</button>
-        </div>
-        <div class="contador"></div>
+      <div class="botoes">
+        <button class="secundario" onclick="voltar()">Voltar</button>
+        <button onclick="avancar()">Continuar →</button>
       </div>
-    </section>
+      <div class="contador"></div>
+    </div>
+  </section>
 
-    <!-- PARTE 6 -->
-    <section class="pagina">
-      <div class="cartao">
-        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-        <div class="etiqueta">parte 06</div>
-        <h1>nosso programa de casalzinho</h1>
+  <!-- FINAL -->
+  <section class="pagina">
+    <div class="cartao final">
+      <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
 
-        <p class="texto">e eu sinto que a gente não tem saído muito assim.
+      <p class="texto">tanto faz, desde que seja contigo. 🤎</p>
 
-tipo, gosto de ficar de casalzinho em casa, mas sei que tu gosta de sair e beber cerveja. eu não me importo de sair contigo pra um lugar e beber, posso beber gin de 10 sem problemas KKKKKK.
+      <div class="coracao">♡</div>
 
-aquele Bar do Porto eu acho a vista bonitinha, por exemplo.
-
-e isso nunca vai ser problema pra mim.</p>
-
-        <div class="botoes">
-          <button class="secundario" onclick="voltar()">← Voltar</button>
-          <button onclick="avancar()">Continuar →</button>
-        </div>
-        <div class="contador"></div>
+      <div class="botoes">
+        <button class="secundario" onclick="voltar()">Voltar</button>
+        <button onclick="reiniciar()">Ler de novo ↻</button>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PARTE 7 -->
-    <section class="pagina">
-      <div class="cartao">
-        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-        <div class="etiqueta">parte 07</div>
-        <h1>teu cheiro é outra história</h1>
+</main>
 
-        <p class="texto">só sou chatinha porque não gosto de beber cerveja.
+<script>
+const paginas = Array.from(document.querySelectorAll(".pagina"));
+const musica1 = document.getElementById("musica1");
+const musica2 = document.getElementById("musica2");
 
-mas teu cheiro com cheiro de cerveja me embriaga, mas de um jeito bom.
+let atual = 0;
+let musicaIniciada = false;
+let faixaAtual = 1;
 
-eu gosto honestamente. 🤎</p>
+function atualizar() {
+  paginas.forEach((pagina, indice) => {
+    pagina.classList.toggle("ativa", indice === atual);
+  });
 
-        <div class="botoes">
-          <button class="secundario" onclick="voltar()">← Voltar</button>
-          <button onclick="avancar()">Continuar →</button>
-        </div>
-        <div class="contador"></div>
-      </div>
-    </section>
+  document.querySelectorAll(".contador").forEach(elemento => {
+    elemento.textContent = `${atual} / ${paginas.length - 1}`;
+  });
 
-    <!-- PARTE 8 -->
-    <section class="pagina">
-      <div class="cartao">
-        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-        <div class="etiqueta">parte 08</div>
-        <h1>cafés superfaturados de SLZ</h1>
-
-        <p class="texto">e algo que eu gosto muito de ir é em cafés superfaturados daqui de SLZ.
-
-e eu quero te levar em todos, ruins e bons, pra gente falar mal e falar bem KKKKKK.
-
-quero viver essas coisinhas contigo.</p>
-
-        <div class="botoes">
-          <button class="secundario" onclick="voltar()">← Voltar</button>
-          <button onclick="avancar()">Continuar →</button>
-        </div>
-        <div class="contador"></div>
-      </div>
-    </section>
-
-    <!-- PARTE 9 -->
-    <section class="pagina">
-      <div class="cartao">
-        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-        <div class="etiqueta">parte 09</div>
-        <h1>quero viver essas coisinhas contigo</h1>
-
-        <p class="texto">ir naqueles eventos de canoagem de manhã cedo e no fim da tarde, fazer trilha se tu gostar, pegar sol na praia ou ficar na pracinha.
-
-tanto faz, desde que seja contigo. 🤎</p>
-
-        <div class="coracao">♡</div>
-
-        <div class="botoes">
-          <button class="secundario" onclick="voltar()">← Voltar</button>
-          <button onclick="avancar()">Continuar →</button>
-        </div>
-        <div class="contador"></div>
-      </div>
-    </section>
-
-    <!-- FINAL -->
-    <section class="pagina">
-      <div class="cartao">
-        <img class="gatinho" src="gif/gatin.gif" alt="gatinho fofo">
-        <div class="etiqueta">fim da cartinha</div>
-        <h1>é isso, meu amor 🤎</h1>
-
-        <p class="texto">não sei muito bem como terminar isso aqui, então vou terminar do jeito mais sincero que consigo:
-
-eu quero viver essas coisas contigo.
-
-as coisas grandes, as pequenas, os rolês aleatórios, os cafés caros e até os dias em que a gente só fica em casa sem fazer nada.
-
-porque, no fim, tanto faz, desde que seja contigo.</p>
-
-        <div class="coracao">♡</div>
-
-        <div class="botoes">
-          <button class="secundario" onclick="voltar()">← Voltar</button>
-          <button onclick="reiniciar()">Ler de novo ↻</button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    const paginas = Array.from(document.querySelectorAll(".pagina"));
-    const musica1 = document.getElementById("musica1");
-    const musica2 = document.getElementById("musica2");
-
-    let atual = 0;
-    let musicaIniciada = false;
-    let faixaAtual = 1;
-
-    function atualizar() {
-      paginas.forEach((pagina, indice) => {
-        pagina.classList.toggle("ativa", indice === atual);
-      });
-
-      document.querySelectorAll(".contador").forEach(elemento => {
-        elemento.textContent = `${atual} / ${paginas.length - 1}`;
-      });
-
-      if (musicaIniciada) {
-        if (atual >= 5 && faixaAtual !== 2) {
-          trocarMusica(2);
-        } else if (atual < 5 && faixaAtual !== 1) {
-          trocarMusica(1);
-        }
-      }
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  if (musicaIniciada) {
+    if (atual >= 4 && faixaAtual !== 2) {
+      trocarMusica(2);
+    } else if (atual < 4 && faixaAtual !== 1) {
+      trocarMusica(1);
     }
+  }
 
-    async function comecar() {
-      atual = 1;
-      musicaIniciada = true;
-      atualizar();
-      await tocarMusica(faixaAtual);
-    }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-    async function tocarMusica(numero) {
-      const escolhida = numero === 1 ? musica1 : musica2;
-      const outra = numero === 1 ? musica2 : musica1;
+async function comecar() {
+  atual = 1;
+  musicaIniciada = true;
+  atualizar();
+  await tocarMusica(faixaAtual);
+}
 
-      outra.pause();
+async function tocarMusica(numero) {
+  const escolhida = numero === 1 ? musica1 : musica2;
+  const outra = numero === 1 ? musica2 : musica1;
 
-      try {
-        await escolhida.play();
-      } catch (erro) {
-        console.log("Não foi possível iniciar a música:", erro);
-      }
-    }
+  outra.pause();
 
-    function trocarMusica(numero) {
-      faixaAtual = numero;
+  try {
+    await escolhida.play();
+  } catch (erro) {
+    console.log("Não foi possível iniciar a música:", erro);
+  }
+}
 
-      const escolhida = numero === 1 ? musica1 : musica2;
-      const outra = numero === 1 ? musica2 : musica1;
+function trocarMusica(numero) {
+  faixaAtual = numero;
 
-      outra.pause();
-      escolhida.currentTime = 0;
-      tocarMusica(numero);
-    }
+  const escolhida = numero === 1 ? musica1 : musica2;
+  const outra = numero === 1 ? musica2 : musica1;
 
-    function avancar() {
-      if (atual < paginas.length - 1) {
-        atual++;
-        atualizar();
-      }
-    }
+  outra.pause();
+  escolhida.currentTime = 0;
+  tocarMusica(numero);
+}
 
-    function voltar() {
-      if (atual > 0) {
-        atual--;
-        atualizar();
-      }
-    }
-
-    function reiniciar() {
-      atual = 0;
-      musicaIniciada = false;
-      faixaAtual = 1;
-
-      musica1.pause();
-      musica2.pause();
-
-      musica1.currentTime = 0;
-      musica2.currentTime = 0;
-
-      atualizar();
-    }
-
+function avancar() {
+  if (atual < paginas.length - 1) {
+    atual++;
     atualizar();
-  </script>
+  }
+}
+
+function voltar() {
+  if (atual > 0) {
+    atual--;
+    atualizar();
+  }
+}
+
+function reiniciar() {
+  atual = 0;
+  musicaIniciada = false;
+  faixaAtual = 1;
+
+  musica1.pause();
+  musica2.pause();
+
+  musica1.currentTime = 0;
+  musica2.currentTime = 0;
+
+  atualizar();
+}
+
+atualizar();
+</script>
 
 </body>
 </html>
